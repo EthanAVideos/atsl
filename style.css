@@ -1,0 +1,69 @@
+#atsl-logo-img {
+	width: 235px;
+	height: 100%;
+}
+
+body {
+	background-color: #f0f0f0;
+}
+
+#body-content {
+	width: 90%;
+	height: 300px;
+	background-color: #f0f0f0;
+}
+
+.enterable-fields-form-input {
+	width: 15%;
+	height: 20px;
+	border: solid 2px rgba(0,0,0,0.5);
+	color: black;
+}
+
+#enterable-fields-form-btn {
+	border-radius: 0%;
+	width: 5.3%;
+	height: 27px;
+	text-align: center;
+	cursor: pointer;
+}
+
+#records {
+	padding-top: 15px;	
+}
+
+#records-list {
+	border: solid 2px rgba(0,0,0,0.5);
+	background-color:#F8F8F8;
+}
+
+.gray {
+  background-color: #f0f0f0;
+}
+
+#records-export-btn, #records-clear-btn {
+	border-radius: 0%;
+	width: 10%;
+	height: 30px;
+	float: right;
+	cursor: pointer;
+}
+
+#confirm-record-popup {
+	display: none;
+	position: absolute;
+	left: 35%;
+	top: 35%;
+	z-index: 1;
+	width: 30%;
+	height: 180px;
+	background-color: lightgray;
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.6);
+}
+
+#confirm-record-popup-submit, #confirm-record-popup-cancel {
+	border-radius: 0%;
+	width: 15%;
+	height: 30px;
+	cursor: pointer;
+}
