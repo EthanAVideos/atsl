@@ -1,0 +1,45 @@
+American Truck Simulator Logger (ATSL) Version: 0.1.1-a.2+bn.2.
+
+* - Add a few more input fields.
+* - 1. Trcuking Company.
+* - 2. Customer.
+* - 3. Break Time.
+
+* - Add an active job option, with simulated game time and break timer.
+
+@ - Update localStorage to json and add the option to load json files of you past (Was never added, because issued with JSON Record Sharing).
+D - records, or generate a json file of past, current record list.
+
+^ - Improve theme.
+11/14/2025
+
+* - Added.
+^ - Working On.
+! - Issues.
+D - Disabled.
+@ - Never Added.
+X - Removed.
+
+Theme Colors and Standerds.
+Backgrounds: #ccccccff
+Record, Nav BG: #e6e6e6ff
+Non active page btn, record section gray acents, borders: #b3b3b3ff
+Active btn, btns, input BG: #999999ff
+BTN, Input borders: #666666ff
+
+
+* - Make Icons for Active Job section.
+* - Added feature to collapes "Log Job" section.
+* - Added nav bar, with version on it. trys to represent a taskbar.
+11/16/2025.
+
+* - Fixing typos.
+* - Records, or generate a json file of past, current record list.
+* - Update localStorage to json and add the option to load json files of you past (Fixs: issues with breaks data is being serialized and deserialize, saveRecords(), loadRecords(), and  addRecordFromValues().)
+    (renabled.)
+11/17/2025
+
+
+Future Ideas:
+Add auto generated and assigned job id or number to jobs.
+Added option to fill out reports and statements at can be attached to the job/record and associated with it via the job id.

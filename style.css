@@ -4,28 +4,55 @@
 }
 
 body {
-	background-color: #f0f0f0;
+	background-color: #ccccccff;
 }
 
 #body-content {
-	width: 90%;
+	width: 98%;
 	height: 300px;
-	background-color: #f0f0f0;
+	background-color: #ccccccff;
+    
+}
+
+/* General Buttons Style*/
+button {
+    font-weight: bold;
+    transition: ease 1s; /* Easily adds slow transition from hover back to all buttons */
+}
+
+button:hover {
+    background-color: #ccccccff !important; /* This was being ingore, fix !important */
+    transition: ease 1s;
+}
+/*  END */
+
+#enterable-fields {
+    border: solid 1.5px #666666ff;
 }
 
 .enterable-fields-form-input {
 	width: 15%;
 	height: 20px;
-	border: solid 2px rgba(0,0,0,0.5);
-	color: black;
+	border: solid 1.5px #666666ff;
+	background-color: #999999ff;
 }
 
-#enterable-fields-form-btn {
+::placeholder {
+    color: black;
+    opacity: 0.7;
+    font-weight: bold;
+}
+
+
+#enterable-fields-form-btn, #enterable-fields-form-active-btn, #collapse-field-forms, #basics-btn, #other-btn {
 	border-radius: 0%;
-	width: 5.3%;
+	width: 12.3%;
 	height: 27px;
 	text-align: center;
 	cursor: pointer;
+    background-color: #999999ff;
+    border: solid 1.5px #666666ff;
+    margin: 5px 2px 5px 2px;
 }
 
 #records {
@@ -33,20 +60,23 @@ body {
 }
 
 #records-list {
-	border: solid 2px rgba(0,0,0,0.5);
-	background-color:#F8F8F8;
+	border: solid 1.5px #666666ff;
+	background-color: #e6e6e6ff;
 }
 
 .gray {
-  background-color: #f0f0f0;
+  background-color: #b3b3b3ff;
 }
 
-#records-export-btn, #records-clear-btn {
+#records-export-btn, #records-clear-btn, #records-share-options-btn {
 	border-radius: 0%;
-	width: 10%;
+	width: 12%;
 	height: 30px;
 	float: right;
 	cursor: pointer;
+    background-color: #999999ff;
+    border: solid 1.5px #666666ff;
+    margin: 4px;
 }
 
 #confirm-record-popup {
@@ -61,9 +91,180 @@ body {
 	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.6);
 }
 
-#confirm-record-popup-submit, #confirm-record-popup-cancel {
+#confirm-record-popup-submit, #confirm-record-popup-cancel, #ed-edited-value-apply-btn, #active-job-edit-editabledetails-close-btn {
 	border-radius: 0%;
-	width: 15%;
+	width: 20%;
 	height: 30px;
 	cursor: pointer;
+    background-color: #999999ff;
+    border: solid 1.5px #666666ff;
+}
+
+/* ACTIVE JOB */
+
+#active-job {
+    width: 100%;
+    height: 207px;
+    background-color: #ccccccff;
+}
+
+#game-time-icon, #breakin-icon {
+    width: 55px;
+    height: 55px;
+}
+
+#drivetime-icon {
+    width: 95px;
+    height: 135px;
+}
+
+#active-job-form-dynamicdetails-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+}
+
+#ed-1, #ed-2, #ed-3, #ed-4 {
+    display: inline-block;
+}
+
+#active-job-form-editable-details {
+    height: 30px;
+}
+
+#active-job-form-dynamicdetails-startbreak {
+    border-radius: 0%;
+    width: 10.3%;
+    height: 27px;
+    text-align: center;
+    cursor: pointer;
+    background-color: orange;
+    border: solid 1.5px #666666ff;
+}
+
+#active-job-form-dynamicdetails-gooffbreak {
+    border-radius: 0%;
+    width: 10.3%;
+    height: 27px;
+    text-align: center;
+    cursor: pointer;
+    background-color: green;
+    border: solid 1.5px #666666ff;
+}
+
+#game-time, #total-job-drivetime, #next-breakin {
+    display: inline-block;
+    font-size: 25px;
+}
+
+#active-job-form-edit-details-btn, #active-job-form-remove-btn, #active-job-form-addrecord-btn, #records-share-menu-form-load-btn, #record-share-menu-close-btn {
+    border-radius: 0%;
+    width: 14%;
+    height: 27px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #999999ff;
+    border: solid 1.5px #666666ff;
+}
+
+#active-job-edit-editabledetails-value {
+    display: none;
+}
+
+#active-job-edit-editabledetails {
+    display: none;
+    position: absolute;
+    left: 35%;
+    top: 35%;
+    z-index: 1;
+    width: 30%;
+    height: 240px;
+    background-color: lightgray;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.6);
+}
+
+#ed-edited-value {
+    width: 45%;
+    height: 20px;
+    border: solid 2px rgba(0,0,0,0.5);
+    color: black;
+}
+
+/* JSON LOAD & GENERATE */
+
+#records-share-menu {
+    position: absolute;
+    left: 35%;
+    top: 35%;
+    z-index: 1;
+    width: 30%;
+    height: 250px;
+    background-color: lightgray;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.6);
+}
+
+#records-share-menu-form-gener-btn {
+    border-radius: 0%;
+    width: 53.3%;
+    height: 27px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #999999ff;
+    border: solid 1.5px #666666ff;
+}
+
+#disable-feature {
+    display: none;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    z-index: 2;
+    width: 100%;
+    height: 250px;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Navigation Bar */
+#navigation {
+    width: 100%;
+    height: 40px;
+    background-color: #e6e6e6ff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.nav-a, #version {
+    display: inline-block;
+}
+
+#version {
+    float: right;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.nav-a {
+    float: left;
+    width: 120px;
+    height: 40px;
+    background-color: #b3b3b3ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 5px 0px 8px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: ease 1s;
+}
+
+.nav-a:hover {
+    background-color: #ccccccff !important;
+    transition: ease 1s;
+}
+
+#active {
+    background-color: #999999ff;
 }

@@ -12,17 +12,56 @@
 </head>
 <body>
 	<div id="atsl-logo">
-		<a href="http://ethan.arm64server.org/EthanAVideos"  target="_blank" title="ATSL Developer Website"><img id="atsl-logo-img" src="ATSL-logo.svg" alt="American Truck Simulator Logger Logo : Failed to load"></a>
+		<a href="http://ethan.arm64server.org/EthanAVideos"  target="_blank" title="ATSL Developer Website"><img id="atsl-logo-img" src="icons/ATSL-logo.svg" alt="American Truck Simulator Logger Logo : Failed to load"></a>
 	</div>
 	<center>
 		<table>
 			<div id="body-content">
+                <button id="collapse-field-forms" type="button" style="float: right;">Toggle Fields</button>
 				<div id="enterable-fields">
 					<h3>Log Job</h3>
 					<form id="enterable-fields-form">
-						<input class="enterable-fields-form-input" type="text" placeholder="Driver" />&nbsp;<input class="enterable-fields-form-input" type="text" placeholder="Truck" />&nbsp;<input class="enterable-fields-form-input" type="text" placeholder="Start Day & Time" />&nbsp;<input class="enterable-fields-form-input" type="text" placeholder="End Day & Time" />&nbsp;<input class="enterable-fields-form-input" type="text" placeholder="Inspection Pass, True or False" />&nbsp;<input class="enterable-fields-form-input" type="text" placeholder="Miles, Before - After" />&nbsp;<button id="enterable-fields-form-btn" type="button">SUBMIT</button>
+                        <p>Trucking Company <input class="enterable-fields-form-input" type="text" placeholder="Trucking Company" />&nbsp;&nbsp;
+                        Driver's Name <input class="enterable-fields-form-input" type="text" placeholder="Driver" />&nbsp;&nbsp;
+                        Truck <input class="enterable-fields-form-input" type="text" placeholder="Truck" />&nbsp;&nbsp;</p>
+                        Customer <input class="enterable-fields-form-input" type="text" placeholder="Customer, Town & State" />&nbsp;&nbsp;
+                        Delivered To <input class="enterable-fields-form-input" type="text" placeholder="Customer, Town & State" />&nbsp;&nbsp;
+                        Cargo <input class="enterable-fields-form-input" type="text" placeholder="Cargo, Weight, and Trailer Type" /></p><br>
+                        <p>Start of Job Day and Time <input class="enterable-fields-form-input" type="text" placeholder="Start Day & Time" />&nbsp;&nbsp;
+                        End of Job Day and Time <input class="enterable-fields-form-input" type="text" placeholder="End Day & Time" />&nbsp;&nbsp;
+                        Inspections <input class="enterable-fields-form-input" type="text" placeholder="Pass, True or False" />&nbsp;&nbsp;
+                        Miles <input class="enterable-fields-form-input" type="text" placeholder="Before - After" />&nbsp;&nbsp;</p>
+                        <button id="enterable-fields-form-btn" type="button">SUBMIT AS RECORD</button> <button id="enterable-fields-form-active-btn" type="button">MARK AS ACTIVE</button>
 					</form>
 				</div>
+                <div id="active-job"> <!-- When no job marked as active #active-job should be hidden, until a job is marked as active, then unhide and fill details -->
+                   <form id="active-job-form">
+                       <p id="active-job-form-staticdetails"><b>Trucking Company:</b>  <b>Driver:</b>  <b>Customer:</b>  <b>Delivered To:</b>  <b>Cargo:</b>  <b>Start</b> </p>
+                       <div id="active-job-form-editable-details">
+                           <p id="ed-1"><b>End:</b> </p> <p id="ed-2"><b>Inspections:</b> </p> <p id="ed-3"><b>Miles:</b> </p> <p id="ed-4"><b>Breaks:</b> </p>
+                       </div>
+                       <div id="active-job-form-dynamicdetails">
+                           <div id="active-job-form-dynamicdetails-stats">
+                               <img id="game-time-icon" src="icons/time.svg" alt="Game Time:"/><p id="game-time"></p>&nbsp;&nbsp; <img id="drivetime-icon" src="icons/drive.svg" alt="Total Job Drive Time:"/><p id="total-job-drivetime"></p>&nbsp;&nbsp; <img id="breakin-icon" src="icons/break.svg" alt="Next Break in:"/><p id="next-breakin"></p><br>
+                            </div>
+                           <!-- ATS uses a vary of 1:20-1:3 time speed of IRL time, we simulate 1:15 IRL, ATS allows you to drive for 14 hours, were fatigue effects start about 3 hours before the mandatory rest is due, 7 hours of #total-job-drivetime change #next-breakin text yellow, 10 hours of drivetime change next-breakin text to red. #total-job-drivetime follow the 1:15, and couts driver drive time, stops during breaks, breaks are a set 10 hour forward, #game-time starts at the Start of Job Day and Time time one log is subitted to active job. -->
+                           <button id="active-job-form-dynamicdetails-startbreak" type="button">TAKE BREAK</button> <button id="active-job-form-dynamicdetails-gooffbreak" type="button">GO ON DUTY</button>
+                       </div><br>
+                       <button id="active-job-form-edit-details-btn" type="button">EDIT</button> <button id="active-job-form-remove-btn" type="button">REMOVE JOB</button> <button id="active-job-form-addrecord-btn" type="button">SUBMIT AS RECORD</button>
+                   </form>
+                   <div id="active-job-edit-editabledetails"> <!-- active-job-edit-editabledetails stays hidden until active-job-form-edit-details-btn is clicked -->
+                       <p><b>Which Details Would You Like To Edit?</b></p>
+                       <a id="edit-ed-1" href="#">End</a> <a id="edit-ed-2" href="#">Inspections</a> <a id="edit-ed-3" href="#">Miles</a> <a id="edit-ed-4" href="#">Breaks</a>
+                       <div id="active-job-edit-editabledetails-value"> <!-- active-job-edit-editabledetails-value stays hidden until one of the edit-ed are clciked -->
+                           <h4>Enter Value</h4>
+                           <form>
+                               <input id="ed-edited-value" type="text" />
+                               <button id="ed-edited-value-apply-btn">APPLY CHANGE</button>
+                           </form>
+                       </div><br><br>
+                       <button id="active-job-edit-editabledetails-close-btn">CLOSE</button>
+                   </div>
+                </div>
 				<div id="confirm-record-popup">
 					<h4>NOTICE</h4>
 					<p>Do you want to submit this record?</p>
@@ -35,177 +74,53 @@
 						<p class="records-list-record"><b>Driver:</b> Ethan <b>Truck:</b> PB 576 <b>Start Time:</b> Sat, 4:30AM <b>End Time:</b> Friday, 5:00PM <b>Inspections Passed:</b> True <b>Miles:</b> 1,000 - 1,900.</p>-->
 						<!-- Development -->
 					</div><br>
-					<button id="records-clear-btn">RESET RECORDS</button>
-					<button id="records-export-btn">EXPORT</button>
+					<button id="records-clear-btn">RESET RECORDS</button>&nbsp;
+					<button id="records-export-btn">EXPORT</button>&nbsp;
+                    <button id="records-share-options-btn" type="button">SHARE RECORDS</button>
 				</div>
+                <div id="records-share-menu">
+                    <h4>Generate JSON or Load JSON</h4>
+                    <form id="records-share-menu-form">
+                        <p>Load JSON file of records</p>
+                        <input id="records-share-menu-form-input" type="file" /> <button id="records-share-menu-form-load-btn" type="button" accept=".json">LOAD</button><br>
+                        <p>Generate JSON of your own records to share, or backup.</p>
+                        <button id="records-share-menu-form-gener-btn" type="button">GENERATE JSON & DOWNLOAD</button>
+                    </form><br><br>
+                    <button id="record-share-menu-close-btn" type="button">CLOSE</button>
+                    <!--<div id="disable-feature"></div>
+                    <p><b>THIS FEATURE IS DISABLED</b><br>
+                    Due to technical issues/limitations, you can close this window by clicking "SHARE RECORDS" again.</p>
+                </div>-->
 			</div>
+            <div id="navigation">
+                <a id="active" class="nav-a" href="ATSL.html">Record & ELD</a><a class="nav-a" href="files/info.html">Information</a><p id="version">ATSL Version: 0.1.1-a.2+bn.2. Power By: EthanA Videos.</p>
+            </div>
 		</table>
 	</center>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="files/ATSL.js"></script>
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("enterable-fields-form");
-  const button = document.getElementById("enterable-fields-form-btn");
-  const recordsList = document.getElementById("records-list");
-  const exportBtn = document.getElementById("records-export-btn");
-  const clearBtn = document.getElementById("records-clear-btn");
-  const popup = document.getElementById("confirm-record-popup");
-  const popupSubmit = document.getElementById("confirm-record-popup-submit");
-  const popupCancel = document.getElementById("confirm-record-popup-cancel");
+const button = document.getElementById("collapse-field-forms");
+const form = document.getElementById("enterable-fields");
 
-  let pendingValues = null;
+// Restore state on page load
+if (localStorage.getItem("enterable-fields-hidden") === "true") {
+    form.style.display = "none";
+}
 
-  // Prevent native form submission
-  form.addEventListener("submit", e => e.preventDefault());
+// Click handler
+button.addEventListener("click", () => {
+    const isHidden = getComputedStyle(form).display === "none";
 
-  // Load saved records from localStorage
-  const savedRecords = JSON.parse(localStorage.getItem("ats_records") || "[]");
-  savedRecords.forEach((html, index) => {
-    const p = document.createElement("p");
-    p.className = "records-list-record";
-    if (index % 2 === 0) p.classList.add("gray");
-    p.innerHTML = html;
-    recordsList.appendChild(p);
-  });
-
-  // Show confirmation popup
-  button.addEventListener("click", e => {
-    e.preventDefault();
-    const inputs = document.querySelectorAll(".enterable-fields-form-input");
-    const values = Array.from(inputs).map(input => input.value.trim());
-
-    if (values.some(v => v === "")) {
-      alert("Please fill in all fields before submitting.");
-      return;
+    if (isHidden) {
+        form.style.display = "block";
+        localStorage.setItem("enterable-fields-hidden", "false");
+    } else {
+        form.style.display = "none";
+        localStorage.setItem("enterable-fields-hidden", "true");
     }
-
-    pendingValues = values;
-
-    if (Array.isArray(pendingValues) && pendingValues.length === 6) {
-      popup.querySelector("p").textContent =
-        `Driver: ${pendingValues[0]} | Truck: ${pendingValues[1]} | Start: ${pendingValues[2]} | End: ${pendingValues[3]} | Inspections Passed: ${pendingValues[4]} | Miles: ${pendingValues[5]}`;
-    }
-
-    popup.style.display = "block";
-  });
-
-  // Popup submit
-  popupSubmit.addEventListener("click", () => {
-    if (!Array.isArray(pendingValues) || pendingValues.length !== 6) return;
-
-    const [driver, truck, start, end, inspection, miles] = pendingValues;
-
-    const record = document.createElement("p");
-    record.className = "records-list-record";
-    if (recordsList.querySelectorAll(".records-list-record").length % 2 === 0)
-      record.classList.add("gray");
-
-    record.innerHTML = `
-      <b>Driver:</b> ${driver} 
-      <b>Truck:</b> ${truck} 
-      <b>Start Time:</b> ${start} 
-      <b>End Time:</b> ${end} 
-      <b>Inspections Passed:</b> ${inspection} 
-      <b>Miles:</b> ${miles}.
-    `;
-
-    recordsList.appendChild(record);
-
-    // Save to localStorage
-    const updated = Array.from(recordsList.querySelectorAll(".records-list-record")).map(r => r.innerHTML);
-    localStorage.setItem("ats_records", JSON.stringify(updated));
-
-    // Clear form and hide popup
-    document.querySelectorAll(".enterable-fields-form-input").forEach(i => i.value = "");
-    pendingValues = null;
-    popup.style.display = "none";
-  });
-
-  // Popup cancel
-  popupCancel.addEventListener("click", () => {
-    pendingValues = null;
-    popup.style.display = "none";
-  });
-
- // Export PDF
-exportBtn.addEventListener("click", () => {
-  try {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ orientation: "p", unit: "mm", format: "a4" });
-
-    const margin = 10;
-    let y = margin;
-    const pageHeight = 297;
-    const lineHeight = 7;
-    const maxWidth = 190;
-
-    // === OPTIONAL LOGO ===
-    // Base64 data
-    const logoImg = new Image();
-	logoImg.src = 'data:image/png;base64,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';
-
-    logoImg.onload = () => {
-  // Add the logo at top-left
-  doc.addImage(logoImg, "PNG", 10, 10, 62, 16); // x, y, width, height in mm
-
-  let y = 10 + 16 + 6; // top margin + logo height + spacing
-  const margin = 10;
-
-  // Add Title
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(16);
-  doc.text("American Truck Simulator Job Log Report", margin, y);
-  y += 10;
-
-  // Add Timestamp
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(12);
-  const now = new Date();
-  const options = { month: "long", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit" };
-  doc.text(`Generated: ${now.toLocaleString("en-US", options)}`, margin, y);
-  y += 10;
-
-      // === RECORDS ===
-      const records = Array.from(recordsList.querySelectorAll(".records-list-record")).map(r => {
-        const fields = [];
-        r.querySelectorAll("b").forEach(b => {
-          const nextText = b.nextSibling ? b.nextSibling.textContent.trim() : "";
-          fields.push(`${b.textContent.trim()} ${nextText}`);
-        });
-        return fields.join(" | ");
-      });
-
-      records.forEach(record => {
-        const recordWidth = doc.getTextWidth(record);
-        const lines = recordWidth > maxWidth ? doc.splitTextToSize(record, maxWidth) : [record];
-
-        if (y + lines.length * lineHeight > pageHeight - margin) {
-          doc.addPage();
-          y = margin;
-        }
-
-        doc.text(lines, margin, y);
-        y += lines.length * lineHeight;
-      });
-
-      doc.save(`ATS_Job_Records_${now.toISOString().split("T")[0]}.pdf`);
-    };
-  } catch (err) {
-    console.error("Export error:", err);
-    alert("Failed to export records. Check console for details.");
-  }
-});
-
-  // Reset / clear records
-  if (clearBtn) {
-    clearBtn.addEventListener("click", () => {
-      if (confirm("Are you sure you want to clear all records?")) {
-        recordsList.innerHTML = "";
-        localStorage.removeItem("ats_records");
-      }
-    });
-  }
 });
 </script>
 
