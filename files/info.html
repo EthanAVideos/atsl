@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>American Truck Simulator Logger</title>
+<meta name="date" content="2025-11-13T15:04:21-0500" >
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="expires" content="0">
+<link href="../style.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/x-icon" href="../ATSL-logo.png">
+</head>
+<body>
+	<div id="atsl-logo">
+		<a href="http://ethan.arm64server.org/EthanAVideos"  target="_blank" title="ATSL Developer Website"><img id="atsl-logo-img" src="../icons/ATSL-logo.svg" alt="American Truck Simulator Logger Logo : Failed to load"></a>
+	</div>
+	<center>
+		<table>
+			<div id="body-content">
+                <button id="basics-btn" type="button" style="float: right;">TOGGLE BASIC INFO</button><br><br>
+                <div id="basics">
+                    <h3>Starting With The Basics</h3>
+                    <p><b>1. Filling Out The Job Section</b><br>
+                    There are two ways of filling out a record.<br><br>
+                    1. Collect all details, once done with the job, fill out all input boxs to the best of you abiltiy and click "SUBMIT AS RECORD" which will add it to the records.<br><br>
+                    2. Fill out a minimum amount of details, the system requires a minimum of Trucking Company, Driver, Customer, Delivered To, Cargo, Start time.
+                    Once filled out click "MARK AS ACTIVE" this will make what may be referred to as "ELD" to become visible.
+                    The following details will be shown: Trucking Company, Driver, Customer, Delivered To, Cargo, Start. These are static details.
+                    You will see below: End, Inspections, Miles, Breaks. These are editable details and can be edited in real time under the Edit Menu via the "EDIT" button.<br><br>
+                    You will see the simulated game time, total job drive time, and next break in time.
+                    Simulated game time: ATS uses a vary of 1:20-1:3 time speed of IRL time, we simulate 1:15 IRL. ATS allows you to drive for 14 hours, were fatigue effects start about 3 hours before the mandatory rest is due, so when you have 7 hours left of drive time the "Next Break in" text will turn yellow, and with 4 hours of drive time left the "Next Break in" text will turn red.
+                    When we refer to "Drive Time Left" we our referring to the the time left to next break in time left.<br><br>
+                    Taking a break, there may be other factures but when in ATS you rest it advances time by ten hours, when you click "TAKE BREAK" we advance time by ten hours, the total job drivetime will be paused, when you click "GO ON DUTY" it will resume total job drivetime and reset next break in.<br><br>
+                    <b>2. My Record Are Gone</b><br>
+                    If you find your records to be missing and you did not click "RESET RECORDS", have you recently cleared you browser history, or changed browsers.
+                    your records are stored on browser localStorage.</p>
+                </div><br>
+                <button id="other-btn" type="button" style="float: right;">TOGGLE OTHER INFO</button><br><br>
+                <div id="other">
+                    <h3>Other Information</h3>
+                    <p><b>Why did I create this tool?</b><br>
+                    I wanted to create a tool that would function something like Job, Stats Logging System/ELD, it may not be 70% or less exactly realistic, how ever I Believe it can add a little bit of realism and fun to your game, and others!<br><br>
+                    <b>Why This Wrote in HTML, CSS, and JS?</b><br>
+                    This code base is sure to run into issues and limitations for some future ideas and more advance details/game details. But I wanted anyone if they had an idea or found an issue to be able to make that inprovment easily plus I know HTML, CSS, and JS better then outer languages.</p>
+                </div>
+			</div>
+            <div id="navigation">
+                <a class="nav-a" href="../ATSL.html">Record & ELD</a><a id="active" class="nav-a" href="info.html">Information</a><p id="version">ATSL Version: 0.1.1-a.2+bn.2. Power By: EthanA Videos.</p>
+            </div>
+		</table>
+	</center>
+
+<script>
+const basicBTN = document.getElementById("basics-btn");
+const basicDIV = document.getElementById("basics");
+const otherBTN = document.getElementById("other-btn");
+const otherDIV = document.getElementById("other");
+
+// BASIC SECTION
+// Restore state on page load
+if (localStorage.getItem("basics-hidden") === "true") {
+    basicDIV.style.display = "none";
+}
+
+// Click handler
+basicBTN.addEventListener("click", () => {
+    const isHidden = getComputedStyle(basicDIV).display === "none";
+
+    if (isHidden) {
+        basicDIV.style.display = "block";
+        localStorage.setItem("basics-hidden", "false");
+    } else {
+        basicDIV.style.display = "none";
+        localStorage.setItem("basics-hidden", "true");
+    }
+});
+
+// OTHER SECTION
+if (localStorage.getItem("other-hidden") === "true") {
+    otherDIV.style.display = "none";
+}
+
+// Click handler
+otherBTN.addEventListener("click", () => {
+    const isHidden = getComputedStyle(otherDIV).display === "none";
+
+    if (isHidden) {
+        otherDIV.style.display = "block";
+        localStorage.setItem("other-hidden", "false");
+    } else {
+        otherDIV.style.display = "none";
+        localStorage.setItem("other-hidden", "true");
+    }
+});
+</script>
+
+</body>
+</html>
