@@ -3,14 +3,25 @@
 	height: 100%;
 }
 
+:root { /*COLOR CODES*/
+    --body: #CCCCCCFF;
+    --off-white: #E6E6E6;
+    --dark-gray: #666666;
+    --light-gray: #999999;
+    --lighter-gray: #B3B3B3;
+    --rgba-ap4: rgba(0,0,0,0.4);
+    --rgba-ap5: rgba(0,0,0,0.5);
+    --rgba-ap6: rgba(0,0,0,0.6);
+}
+
 body {
-	background-color: #ccccccff;
+	background-color: var(--body);
 }
 
 #body-content {
 	width: 98%;
 	height: 300px;
-	background-color: #ccccccff;
+	background-color: var(--body);
     
 }
 
@@ -21,20 +32,20 @@ button {
 }
 
 button:hover {
-    background-color: #ccccccff !important; /* This was being ingore, fix !important */
+    background-color: var(--body) !important; /* This was being ingore, fix !important */
     transition: ease 1s;
 }
 /*  END */
 
 #enterable-fields {
-    border: solid 1.5px #666666ff;
+    border: solid 1.5px var(--dark-gray);
 }
 
 .enterable-fields-form-input {
 	width: 15%;
 	height: 20px;
-	border: solid 1.5px #666666ff;
-	background-color: #999999ff;
+	border: solid 1.5px var(--dark-gray);
+	background-color: var(--light-gray);
 }
 
 ::placeholder {
@@ -50,8 +61,8 @@ button:hover {
 	height: 27px;
 	text-align: center;
 	cursor: pointer;
-    background-color: #999999ff;
-    border: solid 1.5px #666666ff;
+    background-color: var(--light-gray);
+    border: solid 1.5px var(--dark-gray);
     margin: 5px 2px 5px 2px;
 }
 
@@ -60,12 +71,12 @@ button:hover {
 }
 
 #records-list {
-	border: solid 1.5px #666666ff;
-	background-color: #e6e6e6ff;
+	border: solid 1.5px var(--dark-gray);
+	background-color: var(--off-white);
 }
 
 .gray {
-  background-color: #b3b3b3ff;
+  background-color: var(--lighter-gray);
 }
 
 #records-export-btn, #records-clear-btn, #records-share-options-btn {
@@ -74,8 +85,8 @@ button:hover {
 	height: 30px;
 	float: right;
 	cursor: pointer;
-    background-color: #999999ff;
-    border: solid 1.5px #666666ff;
+    background-color: var(--light-gray);
+    border: solid 1.5px var(--dark-gray);
     margin: 4px;
 }
 
@@ -88,7 +99,7 @@ button:hover {
 	width: 30%;
 	height: 180px;
 	background-color: lightgray;
-	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.6);
+	box-shadow: 0 5px 10px 0 var(--rgba-ap6);
 }
 
 #confirm-record-popup-submit, #confirm-record-popup-cancel, #ed-edited-value-apply-btn, #active-job-edit-editabledetails-close-btn {
@@ -96,8 +107,8 @@ button:hover {
 	width: 20%;
 	height: 30px;
 	cursor: pointer;
-    background-color: #999999ff;
-    border: solid 1.5px #666666ff;
+    background-color: var(--light-gray);
+    border: solid 1.5px var(--dark-gray);
 }
 
 /* ACTIVE JOB */
@@ -105,7 +116,7 @@ button:hover {
 #active-job {
     width: 100%;
     height: 207px;
-    background-color: #ccccccff;
+    background-color: var(--body);
 }
 
 #game-time-icon, #breakin-icon {
@@ -140,7 +151,7 @@ button:hover {
     text-align: center;
     cursor: pointer;
     background-color: orange;
-    border: solid 1.5px #666666ff;
+    border: solid 1.5px var(--dark-gray);
 }
 
 #active-job-form-dynamicdetails-gooffbreak {
@@ -150,7 +161,7 @@ button:hover {
     text-align: center;
     cursor: pointer;
     background-color: green;
-    border: solid 1.5px #666666ff;
+    border: solid 1.5px var(--dark-gray);
 }
 
 #game-time, #total-job-drivetime, #next-breakin {
@@ -164,8 +175,8 @@ button:hover {
     height: 27px;
     text-align: center;
     cursor: pointer;
-    background-color: #999999ff;
-    border: solid 1.5px #666666ff;
+    background-color: var(--light-gray);
+    border: solid 1.5px var(--dark-gray);
 }
 
 #active-job-edit-editabledetails-value {
@@ -180,14 +191,14 @@ button:hover {
     z-index: 1;
     width: 30%;
     height: 240px;
-    background-color: lightgray;
-    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.6);
+    background-color: var(--lighter-gray);
+    box-shadow: 0 5px 10px 0 var(--rgba-ap6);
 }
 
 #ed-edited-value {
     width: 45%;
     height: 20px;
-    border: solid 2px rgba(0,0,0,0.5);
+    border: solid 2px var(--rgba-ap5);
     color: black;
 }
 
@@ -200,8 +211,8 @@ button:hover {
     z-index: 1;
     width: 30%;
     height: 250px;
-    background-color: lightgray;
-    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.6);
+    background-color: var(--lighter-gray);
+    box-shadow: 0 5px 10px 0 var(--rgba-ap6);
 }
 
 #records-share-menu-form-gener-btn {
@@ -210,8 +221,8 @@ button:hover {
     height: 27px;
     text-align: center;
     cursor: pointer;
-    background-color: #999999ff;
-    border: solid 1.5px #666666ff;
+    background-color: var(--light-gray);
+    border: solid 1.5px var(--dark-gray);
 }
 
 #disable-feature {
@@ -222,14 +233,14 @@ button:hover {
     z-index: 2;
     width: 100%;
     height: 250px;
-    background-color: rgba(0,0,0,0.4);
+    background-color: var(--rgba-ap4);
 }
 
 /* Navigation Bar */
 #navigation {
     width: 100%;
     height: 40px;
-    background-color: #e6e6e6ff;
+    background-color: var(-off-white);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -249,7 +260,7 @@ button:hover {
     float: left;
     width: 120px;
     height: 40px;
-    background-color: #b3b3b3ff;
+    background-color: var(--lighter-gray);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -261,10 +272,10 @@ button:hover {
 }
 
 .nav-a:hover {
-    background-color: #ccccccff !important;
+    background-color: var(--body) !important;
     transition: ease 1s;
 }
 
 #active {
-    background-color: #999999ff;
+    background-color: var(--light-gray);
 }
